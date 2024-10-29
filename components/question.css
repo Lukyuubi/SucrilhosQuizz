@@ -1,0 +1,30 @@
+#questions {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+#question {
+    margin: 1rem;
+    color: #053c5e;
+}
+
+#questions p {
+    text-align: center;
+}
+
+#questions h2 {
+    color: #e9724c;
+    text-align: center;
+    margin: 1rem;
+}
+
+#options-container {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    margin-bottom: 2rem;
+}
