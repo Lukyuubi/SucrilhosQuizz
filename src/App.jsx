@@ -3,7 +3,7 @@ import { QuizContext } from "../context/quiz";
 
 import Welcome from "../components/welcome";
 import Question from "../components/question";
-//import GameOver from "../components/GameOver";
+import GameOver from "../components/gameover";
 
 import "./App.css";
     

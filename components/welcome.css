@@ -1,44 +1,55 @@
 #welcome {
-    width: 100vw;
+    position: relative;
+    width: 100%;
     height: 100vh;
-    background: #fafafa;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-
-#welcome h2 {
-    color: #e9724c;
+    flex-direction: column;
+    color: white;
     text-align: center;
-    margin: 0rem 1rem;
+
+    /* Imagem de fundo */
+    background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.launchbox-app.com%2Fa745e581-7955-4049-84fc-36dd7e3904f7.jpg&f=1&nofb=1&ipt=5a451b65744df634c6f85cdb2cffaf781af17a0794960fb1663d70d5c73633b9&ipo=images');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-#welcome p {
-    color: #053c5e;
-    font-size: 1.15rem;
-    text-align: center;
-    margin: 0rem 0.5rem;
+.content {
+    position: relative;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.5); 
+    padding: 20px;
+    border-radius: 8px;
 }
 
-#welcome button {
-    color: #ffffff;
-    font-size: 1.15rem;
-    background-color: #e9724c;
-    border: 0.15rem solid #84290b;
-    padding: 0.25rem 1rem;
-    border-radius: 0.5rem;
-    display: inline-block;
-    margin: 1rem;
-}
-
-#welcome button:hover {
+button {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
-    background-color: #cd532b;
+    font-size: 16px;
 }
 
-#welcome img {
-    max-width: 90%;
-    margin: 1.25rem 0rem;
-    border-radius: 1.5rem;
+button:hover {
+    background-color: #2980b9;
+}
+
+footer {
+    position: absolute;
+    bottom: 10%;
+    background: rgba(0, 0, 0, 0.5); 
+    text-align: center;
+    width: 60%;
+    color: white;
+    font-size: 15px;
+    opacity: 0.8;
+}
+
+footer p {
+    margin: 0;
+    padding: 0;
 }

@@ -1,33 +1,56 @@
 import { useContext } from "react";
 import { QuizContext } from "../context/quiz";
-
-import "./gameOver.css";
+import "./gameover.css";
 
 const GameOver = () => {
-    //Aqui precisamos verificar o resultado final do quizz
     const [quizState, dispatch] = useContext(QuizContext);
-    let score = -1;
-    if(score<=score.quizState.scoreAcao){score = score.quizState.scoreAcao;}
-    if(score<=score.quizState.scoreAventura){score = score.quizState.scoreAventura;}
-    if(score<=score.quizState.scoreRPG){score = score.quizState.scoreRPG;}
-    if(score<=score.quizState.scoreEstrategia){score = score.quizState.scoreEstrategia;}
-    if(score<=score.quizState.scorePuzzle){score = score.quizState.scorePuzzle;}
-    if(score<=score.quizState.scoreTerror){score = score.quizState.scoreTerror;}
-    if(score<=score.quizState.scoreFPS){score = score.quizState.scoreFPS;}
 
-    //Fazer verificações para devolver a página final
-    if(score===score.quizState.scoreAcao){
+    // A lógica de determinar a maior pontuação
+    const scores = {
+        Acao: quizState.scoreAcao,
+        Aventura: quizState.scoreAventura,
+        RPG: quizState.scoreRPG,
+        Estrategia: quizState.scoreEstrategia,
+        Puzzle: quizState.scorePuzzle,
+        Terror: quizState.scoreTerror,
+        FPS: quizState.scoreFPS,
+    };
+
+    // Verifica se todas as pontuações são zero (caso todas as respostas tenham sido "Não")
+    const allScoresAreZero = Object.values(scores).every(score => score === 0);
+
+    // Caso o jogo tenha terminado e todas as respostas tenham sido "Não"
+    if (allScoresAreZero) {
         return (
-            <div id="gameover">
+            <div id="gameoverZero">
                 <h2>Resultado Final</h2>
-                <p>Seu gênero de jogo é Ação</p>
+                <p>Não conseguimos recomendar um gênero de jogo com base nas suas respostas.</p>
                 <button onClick={() => dispatch({ type: "NEW_GAME" })}>
                     Jogar Novamente
                 </button>
             </div>
         );
     }
-    //Continuar com outras telas
+
+    // Identifica o gênero com a maior pontuação
+    const maxGenre = Object.keys(scores).reduce((a, b) =>
+        scores[a] > scores[b] ? a : b
+    );
+
+    // Verifica se o jogo terminou
+    if (quizState.gameStage !== "End") {
+        return null; // Caso o jogo não tenha terminado, nada será renderizado
+    }
+
+    return (
+        <div id="gameover">
+            <h2>Resultado Final</h2>
+            <p>Seu gênero de jogo é: {maxGenre}</p>
+            <button onClick={() => dispatch({ type: "NEW_GAME" })}>
+                Jogar Novamente
+            </button>
+        </div>
+    );
 };
 
 export default GameOver;
